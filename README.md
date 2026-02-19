@@ -1,252 +1,255 @@
-# Keystone – Server Concept (Work in Progress)
-
-Keystone is a modular multiplayer server focused on citybuilding, player-driven economy,
-controlled PvP, and long-term progression.
-The goal is a server that regulates itself through systems rather than constant admin intervention.
-
----
-
-## 1. Server Structure & Worlds
-
-### 1.1 Keystone Hub (Main World / Citybuild)
-
-- Persistent world (no reset)
-- Central social and economic hub
-- Players can claim land plots
-- Building similar to a classic Citybuild server
-
-**Plots**
-- Size: 32×32 blocks
-- Maximum of 4 plots per account
-- Each plot has configurable flags:
-  - PvP flag (on / off)
-  - Teleport flag (on / off)
-- Teleporting into a plot requires permission (owner or trusted player)
-
-Plots can be used for:
-- Housing
-- Shops and businesses
-- Player-designed games (e.g. parkour / jumping puzzles)
-
----
-
-### 1.2 Farm Worlds (Weekly Reset)
-
-#### PvE Farm World
-- Resources, mobs, and vanilla loot
-- All vanilla items can be brought back to the hub
-- Primary purpose: supply the player economy
-
-#### PvP Farm World
-- PvP always enabled
-- Additional ores and resources
-- These resources add a **PvP damage reduction bonus** to existing equipment
-- No new gear tiers; bonuses modify existing items
-
-**PvP Bonus Rules**
-- Applies only against player damage
-- No effect in PvE
-- Bonus degrades on PvP death
-
-**Death in the PvP Farm World**
-- Inventory items drop on the ground
-- Weapons and armor are retained
-- PvP bonus may be reduced or damaged
-
-**Entry Protection**
-- Time-based protection after entering the PvP farm world
-- Protection ends:
-  - after a short time period
-  - when the player attacks another player
-- While protected:
-  - no PvP
-  - no looting
-
----
-
-### 1.3 Minigame Server
-
-- Completely separated from hub and farm worlds
-- No items or equipment carried over
-- Independent progression system:
-  - points
-  - titles
-  - ranks
-- Rewards are cosmetic or social only (no power advantages)
-
----
-
-## 2. Claim & Decay System (Core Mechanic)
-
-### 2.1 Claim Crystal
-
-Each plot contains a **Claim Crystal** as its central management object.
-
-Properties:
-- Visibly placed within the plot
-- Cannot be broken while active
-- Not tradeable
-- Not automatable
-- The only interface for managing the plot
-
-The crystal displays:
-- Remaining time until decay
-- Resource consumption per day
-- Color state (green → yellow → red)
-- Last resource contribution
-
----
-
-### 2.2 Decay Resource
-
-- Must be actively inserted into the Claim Crystal
-- Consumed per plot per day
-- The more plots a crystal covers, the higher the daily consumption
-- Resource can be deposited by:
-  - the owner
-  - trusted players
-  - guild members
-
-**Capacity**
-- Limited storage capacity (no unlimited stockpiling)
-- Example: enough for 7–10 real-life days
-- Encourages active upkeep rather than “set and forget”
-
----
-
-### 2.3 Decay Phases
-
-1. **Active**
-   - Crystal is green
-   - Full protection enabled
-
-2. **Warning Phase**
-   - Crystal turns yellow / orange
-   - Visible countdown (e.g. 24 hours)
-
-3. **Decayed**
-   - Crystal turns red
-   - For approximately 3 days:
-     - blocks can be broken
-     - containers can be looted
-
-4. **Release**
-   - Claim is removed
-   - Plot becomes available for reclaiming
-
----
-
-### 2.4 Decay Visibility
-
-- Color changes and particle effects on the Claim Crystal
-- UI tooltip when nearby
-- Subtle map indicators for decayed claims
-
-Goal: transparency and fairness instead of surprise or frustration.
-
----
-
-## 3. Economy System
-
-### 3.1 Currencies
-
-- 100 Copper = 1 Silver
-- 100 Silver = 1 Gold
-
----
-
-### 3.2 Voting Rewards
-
-- Voting rewards **Copper only**
-- No Silver
-- No Gold
-- No equipment
-- No progression materials
-
-Voting is meant for early support and convenience, not progression acceleration.
-
----
-
-### 3.3 Income Sources
-
-- Player shops
-- Services
-- PvP farm world activities
-- Instances and dangerous biomes
-- Player-created games
-
----
-
-### 3.4 Gold Sinks
-
-- Plot maintenance fees
-- Upkeep costs
-- NPC services:
-  - cosmetic effects
-  - scrolls
-  - emotes
-  - convenience features (e.g. /home)
-- Exclusive prestige locations for high-wealth players
-
----
-
-## 4. Shops, Businesses & Player Games
-
-### Shops & Businesses
-- Located on standard plots
-- Use modified merchant chests
-- Transparent trading mechanics
-
-**Costs**
-- Base plot fee
-- Additional small transaction tax (e.g. 1–2%)
-- No fixed additional rent for shops
-
----
-
-### Player Games
-- Skill-based content (parkour, puzzles, arenas)
-- Entry fee paid in in-game currency
-- No RNG-based gambling
-- Clear rules:
-  - maximum entry cost
-  - minimum payout
-- Enforcement:
-  - Discord ticket system
-  - rule violations result in loss of permission to host player games
-
----
-
-## 5. Scrolls & Consumable Items
-
-### Allowed
-- Teleporting to players with consent
-- Visual effects (fireworks, glow, particles)
-- Short-duration buffs (invisibility, speed, night vision)
-
-### Forbidden
-- Teleporting without consent
-- Teleporting into protected claims
-- Escaping PvP or death situations
-
-Core principle:
-Attention and convenience are allowed.
-Power, exploits, and conflict avoidance are not.
-
----
-
-## 6. Design Principles
-
-- Clear separation of systems (Hub / Farm Worlds / Minigames)
-- Players generate meaningful content
-- Economy is regulated through sinks, not admin intervention
-- Progression through activity, not voting or shortcuts
-- Transparency over hidden mechanics
+# Keystone – Resonance City System
+### Server Concept (Work in Progress)
 
 ---
 
 ## Status
-**Work in Progress – Design Phase**
+**Work in Progress – Core System Phase**
 
-Next focus: technical specification of the Claim Crystal system.
+---
 
+## Vision
+
+Keystone is a modular PvE multiplayer server built around:
+
+- Collective city progression  
+- Player-driven economy  
+- Long-term world evolution  
+
+Instead of a traditional protection shield, each city is powered by a **Resonance Crystal** — a central energy core that shapes the city’s identity, growth, and interaction with the world.
+
+> The crystal does not merely defend the city.  
+> It defines its evolution.
+
+---
+
+# 1. Server Structure
+
+## 1.1 Keystone Hub (Persistent City World)
+
+- No world resets  
+- Central social and economic hub  
+- Player-owned plots (32×32 blocks)  
+- Maximum 4 plots per account  
+
+### Plot Usage
+
+Plots can be used for:
+
+- Housing  
+- Shops  
+- Infrastructure  
+- Community projects  
+
+Each plot contains a **Claim Crystal** for ownership management.
+
+---
+
+## 1.2 PvE Farm Worlds (Weekly Reset)
+
+- Resource gathering  
+- Mob combat  
+- Exploration  
+- Rare materials from dangerous regions  
+
+All items can be transported back to the Hub.
+
+Energy crystals drop naturally during normal PvE gameplay.  
+Energy farming is integrated into standard progression.
+
+> No separate grind system.
+
+---
+
+# 2. The Resonance Crystal (Core Mechanic)
+
+Each city is built around a central **Resonance Crystal**.
+
+The crystal generates resonance — a stabilizing field that shapes the surrounding environment and enables city progression.
+
+It is not a defensive shield.  
+It is a civilization core.
+
+---
+
+## 2.1 Two Energy Layers
+
+### A) Operational Energy (Upkeep)
+
+- Generated through normal PvE activity  
+- Used to maintain basic city stability  
+- Prevents degradation of infrastructure  
+- Shared through player contributions  
+
+This is continuous maintenance energy.
+
+It keeps the system running.
+
+---
+
+### B) Resonance Progress Energy (Long-Term Investment)
+
+To upgrade the crystal, the city must invest:
+
+- Large quantities of refined energy  
+- Rare materials from higher regions  
+- Event-based drops  
+- Major community resource contributions  
+
+Crystal upgrades are milestone events.  
+They are not daily occurrences.
+
+Progression is intentionally slow and long-term.
+
+---
+
+# 3. Crystal Growth & City Evolution
+
+As the Resonance Crystal levels up, the city visibly evolves.
+
+Progress is architectural, functional, and systemic — not just numerical.
+
+---
+
+## Example Progression Stages
+
+### Stage 0 – Outpost
+
+- Small central crystal  
+- Basic infrastructure  
+- Limited NPC presence  
+- Minimal bonuses  
+
+---
+
+### Stage 1 – Stabilized Settlement
+
+- Increased resonance radius  
+- Production efficiency bonuses  
+- Additional NPC traders appear  
+- Public infrastructure improves  
+
+---
+
+### Stage 2 – Urban Center
+
+- Manifested city structures (walls, halls, towers)  
+- Advanced crafting stations unlock  
+- Rare merchants visit  
+- Environmental aesthetic changes  
+
+---
+
+### Stage 3 – Resonance Nexus
+
+- High-tier crafting systems unlock  
+- City-wide bonuses expand  
+- Unique PvE events become possible  
+- Major public constructions activate  
+
+---
+
+### Stage 4 – Metropolis
+
+- The city influences surrounding regions  
+- Special expedition content unlocks  
+- Global event interactions possible  
+- Crystal becomes a world-level landmark  
+
+Crystal growth is visible and meaningful.
+
+---
+
+# 4. Resonance & World Interaction
+
+As resonance increases, the city gains advantages — but also visibility.
+
+High resonance may:
+
+- Attract rare traders  
+- Trigger special PvE events  
+- Cause mana anomalies  
+- Draw attention from energy-seeking entities  
+
+Events are not scheduled waves.  
+They are probabilistic resonance reactions.
+
+> No tower-defense mechanics.  
+> The world reacts organically to energy concentration.
+
+---
+
+# 5. Claim System
+
+Each player plot contains a **Claim Crystal**.
+
+### Properties
+
+- Visibly placed  
+- Non-tradeable  
+- Non-automatable  
+- Central management object  
+
+### Displays
+
+- Remaining upkeep time  
+- Contribution log  
+- Stability state indicator  
+
+Claim upkeep energy contributes indirectly to city resonance.
+
+Private plots remain protected regardless of city level.
+
+---
+
+# 6. Economy Framework
+
+## Currency
+
+- 100 Copper = 1 Silver  
+- 100 Silver = 1 Gold  
+
+---
+
+## Income Sources
+
+- Resource trading  
+- Player shops  
+- Crafting services  
+- Expedition rewards  
+- Event participation  
+
+---
+
+## Gold Sinks
+
+- Plot upkeep  
+- City infrastructure investments  
+- NPC services  
+- Cosmetic unlocks  
+- Public construction projects  
+
+Economic balance is maintained through sinks, not artificial restrictions.
+
+---
+
+# 7. Design Philosophy
+
+- The Resonance Crystal represents civilization, not defense  
+- Growth unlocks potential, not obligation  
+- Upkeep is integrated into normal gameplay  
+- Progress is collective and visible  
+- Power increases opportunity — and attention  
+- No artificial grind loops  
+- No forced event cycles  
+
+> The city is not protected from the world.  
+> It becomes important to it.
+
+---
+
+# Next Focus
+
+- Detailed crystal progression mechanics  
+- Long-term upgrade pacing  
+- Future specialization paths  
